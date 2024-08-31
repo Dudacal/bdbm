@@ -148,7 +148,7 @@ function sendEmail() {
     Email.send({
         Host: "smtp.elasticemail.com",
         Username: "dudacal20@gmail.com",
-        Password: "...",
+        Password: "senha123",
         To: "dudacal20@gmail.com",
         From: "dudacal20@gmail.com",
         ReplyFrom: document.getElementById("email").value,

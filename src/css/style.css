@@ -568,13 +568,14 @@ body {
     position: relative;
     display: flex;
     align-items: baseline;
-    justify-content: space-between;
+    justify-content: space-around;
     gap: 50px;
+    width: 100%;
     top: 20px;
 }
 
 .card {
-    min-width: 300px;
+    width: 350px;
     height: auto;
     display: flex;
     align-items: center;
@@ -595,7 +596,7 @@ body {
 .card h2 {
     text-align: left;
     font-family: var(--subtitle);
-    font-size: 2em;
+    font-size: 1.6em;
     font-weight: 100;
     position: relative;
     width: 100%;
@@ -940,9 +941,9 @@ body {
     .header nav {
         display: none;
     }
-
     .cardcarrou {
         flex-wrap: wrap;
+        justify-content: center;;
     }
 
     .news h3 {
@@ -954,6 +955,9 @@ body {
     .dropdown_menu {
         left: 2rem;
         width: unset;
+    }
+    .card {
+        width: 300px;
     }
 }
 
