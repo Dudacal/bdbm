@@ -42,6 +42,326 @@
       iniciar. Quando o instituto federal retornou presencialmente no
       início de 2022, foi o ano que mais teve busca, e conforme as coisas
       foram voltando ao normal em 2023, diminuiu o caso anual.</p>
+    <div>
+      <style>
+  #chartdiv1 {
+    width: 100%;
+    height: 300px;
+  }
+  </style>
+
+      <!-- Resources -->
+      <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
+      <script src="https://cdn.amcharts.com/lib/5/xy.js"></script>
+      <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
+
+      <!-- Chart code -->
+      <script>
+  am5.ready(function() {
+  
+  // Create root element
+  // https://www.amcharts.com/docs/v5/getting-started/#Root_element
+  var root = am5.Root.new("chartdiv1");
+  
+  
+  // Set themes
+  // https://www.amcharts.com/docs/v5/concepts/themes/
+  root.setThemes([
+    am5themes_Animated.new(root)
+  ]);
+  
+  root.dateFormatter.setAll({
+    dateFormat: "yyyy",
+    dateFields: ["valueX"]
+  });
+  
+  var data = [{
+    "date": "2019-01",
+    "value": 0
+  }, {
+    "date": "2019-02",
+    "value": 10
+  }, {
+    "date": "2019-03",
+    "value": 12
+  }, {
+    "date": "2019-04",
+    "value": 18
+  }, {
+    "date": "2019-05",
+    "value": 16
+  }, {
+    "date": "2019-06",
+    "value": 17
+  }, {
+    "date": "2019-07",
+    "value": 5
+  }, {
+    "date": "2019-08",
+    "value": 47
+  }, {
+    "date": "2019-09",
+    "value": 18
+  }, {
+    "date": "2019-10",
+    "value": 39
+  }, {
+    "date": "2019-11",
+    "value": 22
+  }, {
+    "date": "2019-12",
+    "value": 5
+  }, {
+    "date": "2020-01",
+    "value": 0
+  }, {
+    "date": "2020-02",
+    "value": 0
+  }, {
+    "date": "2020-03",
+    "value": 0
+  }, {
+    "date": "2020-04",
+    "value": 0
+  }, {
+    "date": "2020-05",
+    "value": 1
+  }, {
+    "date": "2020-06",
+    "value": 3
+  }, {
+    "date": "2020-07",
+    "value": 16
+  }, {
+    "date": "2020-08",
+    "value": 14
+  }, {
+    "date": "2020-09",
+    "value": 21
+  }, {
+    "date": "2020-10",
+    "value": 13
+  }, {
+    "date": "2020-11",
+    "value": 21
+  }, {
+    "date": "2020-12",
+    "value": 21
+  }, {
+    "date": "2021-01",
+    "value": 3
+  }, {
+    "date": "2021-02",
+    "value": 19
+  }, {
+    "date": "2021-03",
+    "value": 25
+  }, {
+    "date": "2021-04",
+    "value": 36
+  }, {
+    "date": "2021-05",
+    "value": 38
+  }, {
+    "date": "2021-06",
+    "value": 33
+  }, {
+    "date": "2021-07",
+    "value": 36
+  }, {
+    "date": "2021-08",
+    "value": 43
+  }, {
+    "date": "2021-09",
+    "value": 25
+  }, {
+    "date": "2021-10",
+    "value": 33
+  }, {
+    "date": "2021-11",
+    "value": 41
+  }, {
+    "date": "2021-12",
+    "value": 39
+  }, {
+    "date": "2022-01",
+    "value": 30
+  }, {
+    "date": "2022-02",
+    "value": 42
+  }, {
+    "date": "2022-03",
+    "value": 36
+  }, {
+    "date": "2022-04",
+    "value": 23
+  }, {
+    "date": "2022-05",
+    "value": 49
+  }, {
+    "date": "2022-06",
+    "value": 58
+  }, {
+    "date": "2022-07",
+    "value": 0
+  }, {
+    "date": "2022-08",
+    "value": 25
+  }, {
+    "date": "2022-09",
+    "value": 65
+  }, {
+    "date": "2022-10",
+    "value": 48
+  }, {
+    "date": "2022-11",
+    "value": 49
+  }, {
+    "date": "2022-12",
+    "value": 45
+  }, {
+    "date": "2023-01",
+    "value": 3
+  }, {
+    "date": "2023-02",
+    "value": 3
+  }, {
+    "date": "2023-03",
+    "value": 47
+  }, {
+    "date": "2023-04",
+    "value": 40
+  }, {
+    "date": "2023-05",
+    "value": 41
+  }, {
+    "date": "2023-06",
+    "value": 78
+  }, {
+    "date": "2023-07",
+    "value": 17
+  }, {
+    "date": "2023-08",
+    "value": 28
+  }, {
+    "date": "2023-09",
+    "value": 36
+  }, {
+    "date": "2023-10",
+    "value": 0
+  }, {
+    "date": "2023-11",
+    "value": 40
+  }, {
+    "date": "2023-12",
+    "value": 13
+  }];
+  
+  
+  var chart = root.container.children.push(am5xy.XYChart.new(root, {
+    focusable: true,
+    panX: true,
+    panY: true,
+    wheelX: "panX",
+    wheelY: "zoomX",
+    pinchZoomX:true,
+    paddingLeft: 0
+  }));
+  
+  var easing = am5.ease.linear;
+  
+  
+  // Create axes
+  // https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
+  var xAxis = chart.xAxes.push(am5xy.DateAxis.new(root, {
+    maxDeviation: 0.1,
+    groupData: false,
+    baseInterval: {
+      timeUnit: "day",
+      count: 1
+    },
+    renderer: am5xy.AxisRendererX.new(root, {
+      minorGridEnabled: true,
+      minGridDistance: 70
+    }),
+    tooltip: am5.Tooltip.new(root, {})
+  }));
+  
+  var yAxis = chart.yAxes.push(am5xy.ValueAxis.new(root, {
+    maxDeviation: 0.2,
+    renderer: am5xy.AxisRendererY.new(root, {})
+  }));
+  
+  
+  // Add series
+  // https://www.amcharts.com/docs/v5/charts/xy-chart/series/
+  var series = chart.series.push(am5xy.LineSeries.new(root, {
+    minBulletDistance: 2,
+    connect: false,
+    xAxis: xAxis,
+    yAxis: yAxis,
+    valueYField: "value",
+    valueXField: "date",
+    tooltip: am5.Tooltip.new(root, {
+      pointerOrientation: "horizontal",
+      labelText: "{valueY}"
+    })
+  }));
+  
+  series.fills.template.setAll({
+    fillOpacity: 0.2,
+    visible: true
+  });
+  
+  series.strokes.template.setAll({
+    strokeWidth: 1
+  });
+  
+  series.data.processor = am5.DataProcessor.new(root, {
+    dateFormat: "yyyy-MM-dd",
+    dateFields: ["date"]
+  });
+  
+  series.data.setAll(data);
+  
+  series.bullets.push(function() {
+    var circle = am5.Circle.new(root, {
+      radius: 4,
+      fill: root.interfaceColors.get("background"),
+      stroke: series.get("fill"),
+      strokeWidth: 1
+    })
+  
+    return am5.Bullet.new(root, {
+      sprite: circle
+    })
+  });
+  
+  
+  // Add cursor
+  // https://www.amcharts.com/docs/v5/charts/xy-chart/cursor/
+  var cursor = chart.set("cursor", am5xy.XYCursor.new(root, {
+    xAxis: xAxis,
+    behavior: "none"
+  }));
+  cursor.lineY.set("visible", true);
+  
+  // add scrollbar
+  chart.set("scrollbarX", am5.Scrollbar.new(root, {
+    orientation: "horizontal"
+  }));
+  
+  
+  // Make stuff animate on load
+  // https://www.amcharts.com/docs/v5/concepts/animations/
+  chart.appear(1000, 100);
+  
+  }); // end am5.ready()
+  </script>
+
+      <!-- HTML -->
+      <div id="chartdiv1"></div>
+    </div>
     <section class="contact" id="contact">
       <h1>RESPONDA NOSSO QUIZ!</h1>
       <form onsubmit="sendEmail(); reset(); return false">
@@ -178,585 +498,559 @@
         <input type="submit" value="Enviar respostas" class="btn">
       </form>
     </section>
-    <div>
-      <style>
-                #chartdiv {
-                  width: 100%;
-                  height: 800px;
-                }
-                </style>
+    <div class="graficos">
+      <div>
+        <h2>Questão 1</h2>
+        <style>
+        #chartdiv {
+          width: 100%;
+          height: 500px;
+        }
+        </style>
 
-      <!-- Resources -->
-      <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
-      <script src="https://cdn.amcharts.com/lib/5/xy.js"></script>
-      <script
-        src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
+        <!-- Resources -->
+        <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
+        <script src="https://cdn.amcharts.com/lib/5/xy.js"></script>
+        <script
+          src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
 
-      <!-- Chart code -->
-      <script>
-                am5.ready(function() {
-                
-                // Create root element
-                // https://www.amcharts.com/docs/v5/getting-started/#Root_element
-                var root = am5.Root.new("chartdiv");
-                
-                
-                // Set themes
-                // https://www.amcharts.com/docs/v5/concepts/themes/
-                root.setThemes([
-                  am5themes_Animated.new(root)
-                ]);
-                
-                
-                // Create chart
-                // https://www.amcharts.com/docs/v5/charts/xy-chart/
-                var chart = root.container.children.push(am5xy.XYChart.new(root, {
-                  panX: false,
-                  panY: false,
-                  wheelX: "none",
-                  wheelY: "none",
-                  layout: root.horizontalLayout,
-                  paddingLeft: 0
-                }));
-                
-                
-                // Add legend
-                // https://www.amcharts.com/docs/v5/charts/xy-chart/legend-xy-series/
-                var legendData = [];
-                var legend = chart.children.push(
-                  am5.Legend.new(root, {
-                    nameField: "name",
-                    fillField: "color",
-                    strokeField: "color",
-                    //centerY: am5.p50,
-                    marginLeft: 20,
-                    y: 20,
-                    layout: root.verticalLayout,
-                    clickTarget: "none"
-                  })
-                );
-                
-                var data = [{
-                  region: "Questão 4",
-                  state: "   Discordo plenamente",
-                  sales: 20
-                }, {
-                  region: "Questão 4",
-                  state: "   Discordo parcialmente",
-                  sales: 20
-                }, {
-                  region: "Questão 4",
-                  state: "   Neutro",
-                  sales: 20
-                }, {
-                  region: "Questão 4",
-                  state: "   Concordo parcialmente",
-                  sales: 20
-                }, {
-                  region: "Questão 4",
-                  state: "   Concordo plenamente",
-                  sales: 20
-                }, {
-                  region: "Questão 3",
-                  state: "  Discordo plenamente",
-                  sales: 20
-                }, {
-                  region: "Questão 3",
-                  state: "  Discordo parcialmente",
-                  sales: 20
-                }, {
-                  region: "Questão 3",
-                  state: "  Neutro",
-                  sales: 20
-                }, {
-                  region: "Questão 3",
-                  state: "  Concordo parcialmente",
-                  sales: 20
-                }, {
-                  region: "Questão 3",
-                  state: "  Concordo plenamente",
-                  sales: 20
-                }, {
-                  region: "Questão 2",
-                  state: " Discordo plenamente",
-                  sales: 2
-                }, {
-                  region: "Questão 2",
-                  state: " Discordo parcialmente",
-                  sales: 5
-                }, {
-                  region: "Questão 2",
-                  state: " Neutro",
-                  sales: 9
-                }, {
-                  region: "Questão 2",
-                  state: " Concordo parcialmente",
-                  sales: 29
-                }, {
-                  region: "Questão 2",
-                  state: " Concordo plenamente",
-                  sales: 58
-                }, {
-                  region: "Questão 1",
-                  state: "Discordo plenamente",
-                  sales: 1
-                }, {
-                  region: "Questão 1",
-                  state: "Discordo parcialmente",
-                  sales: 3
-                }, {
-                  region: "Questão 1",
-                  state: "Neutro",
-                  sales: 12
-                }, {
-                  region: "Questão 1",
-                  state: "Concordo parcialmente",
-                  sales: 31
-                }, {
-                  region: "Questão 1",
-                  state: "Concordo plenamente",
-                  sales: 53
-                }];
-                var yAxis = chart.yAxes.push(am5xy.CategoryAxis.new(root, {
-                  categoryField: "state",
-                  renderer: am5xy.AxisRendererY.new(root, {
-                    minGridDistance: 10,
-                    minorGridEnabled: true
-                  }),
-                  tooltip: am5.Tooltip.new(root, {})
-                }));
-                
-                yAxis.get("renderer").labels.template.setAll({
-                  fontSize: 12,
-                  location: 0.5
-                })
-                
-                yAxis.data.setAll(data);
-                
-                var xAxis = chart.xAxes.push(am5xy.ValueAxis.new(root, {
-                  renderer: am5xy.AxisRendererX.new(root, {}),
-                  tooltip: am5.Tooltip.new(root, {})
-                }));
-                
-                var series = chart.series.push(am5xy.ColumnSeries.new(root, {
-                  xAxis: xAxis,
-                  yAxis: yAxis,
-                  valueXField: "sales",
-                  categoryYField: "state",
-                  tooltip: am5.Tooltip.new(root, {
-                    pointerOrientation: "horizontal"
-                  })
-                }));
-                
-                series.columns.template.setAll({
-                  tooltipText: "{categoryY}: [bold]{valueX}[/]",
-                  width: am5.percent(90),
-                  strokeOpacity: 0
-                });
-                
-                series.columns.template.adapters.add("fill", function(fill, target) {
-                  if (target.dataItem) {
-                    switch(target.dataItem.dataContext.region) {
-                      case "Questão 4":
-                        return chart.get("colors").getIndex(0);
-                        break;
-                      case "Questão 3":
-                        return chart.get("colors").getIndex(1);
-                        break;
-                      case "Questão 2":
-                        return chart.get("colors").getIndex(2);
-                        break;
-                      case "Questão 1":
-                        return chart.get("colors").getIndex(3);
-                        break;
-                    }
-                  }
-                  return fill;
-                })
-                
-                series.data.setAll(data);
-                
-                function createRange(label, category, color) {
-                  var rangeDataItem = yAxis.makeDataItem({
-                    category: category
-                  });
-                  
-                  var range = yAxis.createAxisRange(rangeDataItem);
-                  
-                  rangeDataItem.get("label").setAll({
-                    fill: color,
-                    text: label,
-                    location: 1,
-                    fontWeight: "bold",
-                    dx: -130
-                  });
-                
-                  rangeDataItem.get("grid").setAll({
-                    stroke: color,
-                    strokeOpacity: 1,
-                    location: 1
-                  });
-                  
-                  rangeDataItem.get("tick").setAll({
-                    stroke: color,
-                    strokeOpacity: 1,
-                    location: 1,
-                    visible: true,
-                    length: 130
-                  });
-                  
-                  legendData.push({ name: label, color: color });
-                  
-                }
-                
-                createRange("Questão 4", "   Concordo plenamente", chart.get("colors").getIndex(0));
-                createRange("Questão 3", "  Concordo plenamente", chart.get("colors").getIndex(1));
-                createRange("Questão 2", " Concordo plenamente", chart.get("colors").getIndex(2));
-                createRange("Questão 1", "Concordo plenamente", chart.get("colors").getIndex(3));
-                
-                legend.data.setAll(legendData);
-                
-                // Add cursor
-                // https://www.amcharts.com/docs/v5/charts/xy-chart/cursor/
-                var cursor = chart.set("cursor", am5xy.XYCursor.new(root, {
-                  xAxis: xAxis,
-                  yAxis: yAxis
-                }));
-                
-                
-                // Make stuff animate on load
-                // https://www.amcharts.com/docs/v5/concepts/animations/
-                series.appear();
-                chart.appear(1000, 100);
-                
-                }); // end am5.ready()
-                </script>
+        <!-- Chart code -->
+        <script>
+        am5.ready(function() {
+        
+        // Create root element
+        // https://www.amcharts.com/docs/v5/getting-started/#Root_element
+        var root = am5.Root.new("chartdiv");
+        
+        // Set themes
+        // https://www.amcharts.com/docs/v5/concepts/themes/
+        root.setThemes([
+          am5themes_Animated.new(root)
+        ]);
+        
+        // Create chart
+        // https://www.amcharts.com/docs/v5/charts/xy-chart/
+        var chart = root.container.children.push(am5xy.XYChart.new(root, {
+          panX: true,
+          panY: true,
+          wheelX: "panX",
+          wheelY: "zoomX",
+          pinchZoomX: true,
+          paddingLeft:0,
+          paddingRight:1
+        }));
+        
+        // Add cursor
+        // https://www.amcharts.com/docs/v5/charts/xy-chart/cursor/
+        var cursor = chart.set("cursor", am5xy.XYCursor.new(root, {}));
+        cursor.lineY.set("visible", false);
+        
+        
+        // Create axes
+        // https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
+        var xRenderer = am5xy.AxisRendererX.new(root, { 
+          minGridDistance: 30, 
+          minorGridEnabled: true
+        });
+        
+        xRenderer.labels.template.setAll({
+          rotation: -90,
+          centerY: am5.p50,
+          centerX: am5.p100,
+          paddingRight: 15
+        });
+        
+        xRenderer.grid.template.setAll({
+          location: 1
+        })
+        
+        var xAxis = chart.xAxes.push(am5xy.CategoryAxis.new(root, {
+          maxDeviation: 0.3,
+          categoryField: "country",
+          renderer: xRenderer,
+          tooltip: am5.Tooltip.new(root, {})
+        }));
+        
+        var yRenderer = am5xy.AxisRendererY.new(root, {
+          strokeOpacity: 0.1
+        })
+        
+        var yAxis = chart.yAxes.push(am5xy.ValueAxis.new(root, {
+          maxDeviation: 0.3,
+          renderer: yRenderer
+        }));
+        
+        // Create series
+        // https://www.amcharts.com/docs/v5/charts/xy-chart/series/
+        var series = chart.series.push(am5xy.ColumnSeries.new(root, {
+          name: "Series 1",
+          xAxis: xAxis,
+          yAxis: yAxis,
+          valueYField: "value",
+          sequencedInterpolation: true,
+          categoryXField: "country",
+          tooltip: am5.Tooltip.new(root, {
+            labelText: "{valueY}"
+          })
+        }));
+        
+        series.columns.template.setAll({ cornerRadiusTL: 5, cornerRadiusTR: 5, strokeOpacity: 0 });
+        series.columns.template.adapters.add("fill", function (fill, target) {
+          return chart.get("colors").getIndex(series.columns.indexOf(target));
+        });
+        
+        series.columns.template.adapters.add("stroke", function (stroke, target) {
+          return chart.get("colors").getIndex(series.columns.indexOf(target));
+        });
+        
+        
+        // Set data
+        var data = [{
+          country: "Concordo plenamente",
+          value: 53
+        }, {
+          country: "Concordo parcialmente",
+          value: 20
+        }, {
+          country: "Neutro",
+          value: 9
+        }, {
+          country: "Discordo parcialmente",
+          value: 4
+        }, {
+          country: "Discordo plenamente",
+          value: 2
+        }];
+        
+        xAxis.data.setAll(data);
+        series.data.setAll(data);
+        
+        
+        // Make stuff animate on load
+        // https://www.amcharts.com/docs/v5/concepts/animations/
+        series.appear(1000);
+        chart.appear(1000, 100);
+        
+        }); // end am5.ready()
+        </script>
 
-      <!-- HTML -->
-      <div id="chartdiv"></div>
-    </div>
-    <div>
-      <style>
-#chartdiv1 {
-  width: 100%;
-  height: 500px;
-}
-</style>
+        <!-- HTML -->
+        <div id="chartdiv"></div>
+      </div>
+      <div>
+        <h2>Questão 2</h2>
+        <style>
+        #chartdiv2 {
+          width: 100%;
+          height: 500px;
+        }
+        </style>
 
-      <!-- Resources -->
-      <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
-      <script src="https://cdn.amcharts.com/lib/5/xy.js"></script>
-      <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
+        <!-- Resources -->
+        <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
+        <script src="https://cdn.amcharts.com/lib/5/xy.js"></script>
+        <script
+          src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
 
-      <!-- Chart code -->
-      <script>
-am5.ready(function() {
+        <!-- Chart code -->
+        <script>
+        am5.ready(function() {
+        
+        // Create root element
+        // https://www.amcharts.com/docs/v5/getting-started/#Root_element
+        var root = am5.Root.new("chartdiv2");
+        
+        // Set themes
+        // https://www.amcharts.com/docs/v5/concepts/themes/
+        root.setThemes([
+          am5themes_Animated.new(root)
+        ]);
+        
+        // Create chart
+        // https://www.amcharts.com/docs/v5/charts/xy-chart/
+        var chart = root.container.children.push(am5xy.XYChart.new(root, {
+          panX: true,
+          panY: true,
+          wheelX: "panX",
+          wheelY: "zoomX",
+          pinchZoomX: true,
+          paddingLeft:0,
+          paddingRight:1
+        }));
+        
+        // Add cursor
+        // https://www.amcharts.com/docs/v5/charts/xy-chart/cursor/
+        var cursor = chart.set("cursor", am5xy.XYCursor.new(root, {}));
+        cursor.lineY.set("visible", false);
+        
+        
+        // Create axes
+        // https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
+        var xRenderer = am5xy.AxisRendererX.new(root, { 
+          minGridDistance: 30, 
+          minorGridEnabled: true
+        });
+        
+        xRenderer.labels.template.setAll({
+          rotation: -90,
+          centerY: am5.p50,
+          centerX: am5.p100,
+          paddingRight: 15
+        });
+        
+        xRenderer.grid.template.setAll({
+          location: 1
+        })
+        
+        var xAxis = chart.xAxes.push(am5xy.CategoryAxis.new(root, {
+          maxDeviation: 0.3,
+          categoryField: "country",
+          renderer: xRenderer,
+          tooltip: am5.Tooltip.new(root, {})
+        }));
+        
+        var yRenderer = am5xy.AxisRendererY.new(root, {
+          strokeOpacity: 0.1
+        })
+        
+        var yAxis = chart.yAxes.push(am5xy.ValueAxis.new(root, {
+          maxDeviation: 0.3,
+          renderer: yRenderer
+        }));
+        
+        // Create series
+        // https://www.amcharts.com/docs/v5/charts/xy-chart/series/
+        var series = chart.series.push(am5xy.ColumnSeries.new(root, {
+          name: "Series 1",
+          xAxis: xAxis,
+          yAxis: yAxis,
+          valueYField: "value",
+          sequencedInterpolation: true,
+          categoryXField: "country",
+          tooltip: am5.Tooltip.new(root, {
+            labelText: "{valueY}"
+          })
+        }));
+        
+        series.columns.template.setAll({ cornerRadiusTL: 5, cornerRadiusTR: 5, strokeOpacity: 0 });
+        series.columns.template.adapters.add("fill", function (fill, target) {
+          return chart.get("colors").getIndex(series.columns.indexOf(target));
+        });
+        
+        series.columns.template.adapters.add("stroke", function (stroke, target) {
+          return chart.get("colors").getIndex(series.columns.indexOf(target));
+        });
+        
+        
+        // Set data
+        var data = [{
+          country: "Concordo plenamente",
+          value: 53
+        }, {
+          country: "Concordo parcialmente",
+          value: 20
+        }, {
+          country: "Neutro",
+          value: 9
+        }, {
+          country: "Discordo parcialmente",
+          value: 4
+        }, {
+          country: "Discordo plenamente",
+          value: 2
+        }];
+        
+        xAxis.data.setAll(data);
+        series.data.setAll(data);
+        
+        
+        // Make stuff animate on load
+        // https://www.amcharts.com/docs/v5/concepts/animations/
+        series.appear(1000);
+        chart.appear(1000, 100);
+        
+        }); // end am5.ready()
+        </script>
 
-// Create root element
-// https://www.amcharts.com/docs/v5/getting-started/#Root_element
-var root = am5.Root.new("chartdiv1");
+        <!-- HTML -->
+        <div id="chartdiv2"></div>
+      </div>
+      <div>
+        <h2>Questão 3</h2>
+        <style>
+        #chartdiv3 {
+          width: 100%;
+          height: 500px;
+        }
+        </style>
 
+        <!-- Resources -->
+        <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
+        <script src="https://cdn.amcharts.com/lib/5/xy.js"></script>
+        <script
+          src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
 
-// Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
-root.setThemes([
-  am5themes_Animated.new(root)
-]);
+        <!-- Chart code -->
+        <script>
+        am5.ready(function() {
+        
+        // Create root element
+        // https://www.amcharts.com/docs/v5/getting-started/#Root_element
+        var root = am5.Root.new("chartdiv3");
+        
+        // Set themes
+        // https://www.amcharts.com/docs/v5/concepts/themes/
+        root.setThemes([
+          am5themes_Animated.new(root)
+        ]);
+        
+        // Create chart
+        // https://www.amcharts.com/docs/v5/charts/xy-chart/
+        var chart = root.container.children.push(am5xy.XYChart.new(root, {
+          panX: true,
+          panY: true,
+          wheelX: "panX",
+          wheelY: "zoomX",
+          pinchZoomX: true,
+          paddingLeft:0,
+          paddingRight:1
+        }));
+        
+        // Add cursor
+        // https://www.amcharts.com/docs/v5/charts/xy-chart/cursor/
+        var cursor = chart.set("cursor", am5xy.XYCursor.new(root, {}));
+        cursor.lineY.set("visible", false);
+        
+        
+        // Create axes
+        // https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
+        var xRenderer = am5xy.AxisRendererX.new(root, { 
+          minGridDistance: 30, 
+          minorGridEnabled: true
+        });
+        
+        xRenderer.labels.template.setAll({
+          rotation: -90,
+          centerY: am5.p50,
+          centerX: am5.p100,
+          paddingRight: 15
+        });
+        
+        xRenderer.grid.template.setAll({
+          location: 1
+        })
+        
+        var xAxis = chart.xAxes.push(am5xy.CategoryAxis.new(root, {
+          maxDeviation: 0.3,
+          categoryField: "country",
+          renderer: xRenderer,
+          tooltip: am5.Tooltip.new(root, {})
+        }));
+        
+        var yRenderer = am5xy.AxisRendererY.new(root, {
+          strokeOpacity: 0.1
+        })
+        
+        var yAxis = chart.yAxes.push(am5xy.ValueAxis.new(root, {
+          maxDeviation: 0.3,
+          renderer: yRenderer
+        }));
+        
+        // Create series
+        // https://www.amcharts.com/docs/v5/charts/xy-chart/series/
+        var series = chart.series.push(am5xy.ColumnSeries.new(root, {
+          name: "Series 1",
+          xAxis: xAxis,
+          yAxis: yAxis,
+          valueYField: "value",
+          sequencedInterpolation: true,
+          categoryXField: "country",
+          tooltip: am5.Tooltip.new(root, {
+            labelText: "{valueY}"
+          })
+        }));
+        
+        series.columns.template.setAll({ cornerRadiusTL: 5, cornerRadiusTR: 5, strokeOpacity: 0 });
+        series.columns.template.adapters.add("fill", function (fill, target) {
+          return chart.get("colors").getIndex(series.columns.indexOf(target));
+        });
+        
+        series.columns.template.adapters.add("stroke", function (stroke, target) {
+          return chart.get("colors").getIndex(series.columns.indexOf(target));
+        });
+        
+        
+        // Set data
+        var data = [{
+          country: "Concordo plenamente",
+          value: 53
+        }, {
+          country: "Concordo parcialmente",
+          value: 20
+        }, {
+          country: "Neutro",
+          value: 9
+        }, {
+          country: "Discordo parcialmente",
+          value: 4
+        }, {
+          country: "Discordo plenamente",
+          value: 2
+        }];
+        
+        xAxis.data.setAll(data);
+        series.data.setAll(data);
+        
+        
+        // Make stuff animate on load
+        // https://www.amcharts.com/docs/v5/concepts/animations/
+        series.appear(1000);
+        chart.appear(1000, 100);
+        
+        }); // end am5.ready()
+        </script>
 
-root.dateFormatter.setAll({
-  dateFormat: "yyyy",
-  dateFields: ["valueX"]
-});
+        <!-- HTML -->
+        <div id="chartdiv3"></div>
+      </div>
+      <div>
+        <h2>Questão 4</h2>
+        <style>
+        #chartdiv4 {
+          width: 100%;
+          height: 500px;
+        }
+        </style>
 
-var data = [{
-  "date": "2019-01",
-  "value": 0
-}, {
-  "date": "2019-02",
-  "value": 10
-}, {
-  "date": "2019-03",
-  "value": 12
-}, {
-  "date": "2019-04",
-  "value": 18
-}, {
-  "date": "2019-05",
-  "value": 16
-}, {
-  "date": "2019-06",
-  "value": 17
-}, {
-  "date": "2019-07",
-  "value": 5
-}, {
-  "date": "2019-08",
-  "value": 47
-}, {
-  "date": "2019-09",
-  "value": 18
-}, {
-  "date": "2019-10",
-  "value": 39
-}, {
-  "date": "2019-11",
-  "value": 22
-}, {
-  "date": "2019-12",
-  "value": 5
-}, {
-  "date": "2020-01",
-  "value": 0
-}, {
-  "date": "2020-02",
-  "value": 0
-}, {
-  "date": "2020-03",
-  "value": 0
-}, {
-  "date": "2020-04",
-  "value": 0
-}, {
-  "date": "2020-05",
-  "value": 1
-}, {
-  "date": "2020-06",
-  "value": 3
-}, {
-  "date": "2020-07",
-  "value": 16
-}, {
-  "date": "2020-08",
-  "value": 14
-}, {
-  "date": "2020-09",
-  "value": 21
-}, {
-  "date": "2020-10",
-  "value": 13
-}, {
-  "date": "2020-11",
-  "value": 21
-}, {
-  "date": "2020-12",
-  "value": 21
-}, {
-  "date": "2021-01",
-  "value": 3
-}, {
-  "date": "2021-02",
-  "value": 19
-}, {
-  "date": "2021-03",
-  "value": 25
-}, {
-  "date": "2021-04",
-  "value": 36
-}, {
-  "date": "2021-05",
-  "value": 38
-}, {
-  "date": "2021-06",
-  "value": 33
-}, {
-  "date": "2021-07",
-  "value": 36
-}, {
-  "date": "2021-08",
-  "value": 43
-}, {
-  "date": "2021-09",
-  "value": 25
-}, {
-  "date": "2021-10",
-  "value": 33
-}, {
-  "date": "2021-11",
-  "value": 41
-}, {
-  "date": "2021-12",
-  "value": 39
-}, {
-  "date": "2022-01",
-  "value": 30
-}, {
-  "date": "2022-02",
-  "value": 42
-}, {
-  "date": "2022-03",
-  "value": 36
-}, {
-  "date": "2022-04",
-  "value": 23
-}, {
-  "date": "2022-05",
-  "value": 49
-}, {
-  "date": "2022-06",
-  "value": 58
-}, {
-  "date": "2022-07",
-  "value": 0
-}, {
-  "date": "2022-08",
-  "value": 25
-}, {
-  "date": "2022-09",
-  "value": 65
-}, {
-  "date": "2022-10",
-  "value": 48
-}, {
-  "date": "2022-11",
-  "value": 49
-}, {
-  "date": "2022-12",
-  "value": 45
-}, {
-  "date": "2023-01",
-  "value": 3
-}, {
-  "date": "2023-02",
-  "value": 3
-}, {
-  "date": "2023-03",
-  "value": 47
-}, {
-  "date": "2023-04",
-  "value": 40
-}, {
-  "date": "2023-05",
-  "value": 41
-}, {
-  "date": "2023-06",
-  "value": 78
-}, {
-  "date": "2023-07",
-  "value": 17
-}, {
-  "date": "2023-08",
-  "value": 28
-}, {
-  "date": "2023-09",
-  "value": 36
-}, {
-  "date": "2023-10",
-  "value": 0
-}, {
-  "date": "2023-11",
-  "value": 40
-}, {
-  "date": "2023-12",
-  "value": 13
-}];
+        <!-- Resources -->
+        <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
+        <script src="https://cdn.amcharts.com/lib/5/xy.js"></script>
+        <script
+          src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
 
+        <!-- Chart code -->
+        <script>
+        am5.ready(function() {
+        
+        // Create root element
+        // https://www.amcharts.com/docs/v5/getting-started/#Root_element
+        var root = am5.Root.new("chartdiv4");
+        
+        // Set themes
+        // https://www.amcharts.com/docs/v5/concepts/themes/
+        root.setThemes([
+          am5themes_Animated.new(root)
+        ]);
+        
+        // Create chart
+        // https://www.amcharts.com/docs/v5/charts/xy-chart/
+        var chart = root.container.children.push(am5xy.XYChart.new(root, {
+          panX: true,
+          panY: true,
+          wheelX: "panX",
+          wheelY: "zoomX",
+          pinchZoomX: true,
+          paddingLeft:0,
+          paddingRight:1
+        }));
+        
+        // Add cursor
+        // https://www.amcharts.com/docs/v5/charts/xy-chart/cursor/
+        var cursor = chart.set("cursor", am5xy.XYCursor.new(root, {}));
+        cursor.lineY.set("visible", false);
+        
+        
+        // Create axes
+        // https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
+        var xRenderer = am5xy.AxisRendererX.new(root, { 
+          minGridDistance: 30, 
+          minorGridEnabled: true
+        });
+        
+        xRenderer.labels.template.setAll({
+          rotation: -90,
+          centerY: am5.p50,
+          centerX: am5.p100,
+          paddingRight: 15
+        });
+        
+        xRenderer.grid.template.setAll({
+          location: 1
+        })
+        
+        var xAxis = chart.xAxes.push(am5xy.CategoryAxis.new(root, {
+          maxDeviation: 0.3,
+          categoryField: "country",
+          renderer: xRenderer,
+          tooltip: am5.Tooltip.new(root, {})
+        }));
+        
+        var yRenderer = am5xy.AxisRendererY.new(root, {
+          strokeOpacity: 0.1
+        })
+        
+        var yAxis = chart.yAxes.push(am5xy.ValueAxis.new(root, {
+          maxDeviation: 0.3,
+          renderer: yRenderer
+        }));
+        
+        // Create series
+        // https://www.amcharts.com/docs/v5/charts/xy-chart/series/
+        var series = chart.series.push(am5xy.ColumnSeries.new(root, {
+          name: "Series 1",
+          xAxis: xAxis,
+          yAxis: yAxis,
+          valueYField: "value",
+          sequencedInterpolation: true,
+          categoryXField: "country",
+          tooltip: am5.Tooltip.new(root, {
+            labelText: "{valueY}"
+          })
+        }));
+        
+        series.columns.template.setAll({ cornerRadiusTL: 5, cornerRadiusTR: 5, strokeOpacity: 0 });
+        series.columns.template.adapters.add("fill", function (fill, target) {
+          return chart.get("colors").getIndex(series.columns.indexOf(target));
+        });
+        
+        series.columns.template.adapters.add("stroke", function (stroke, target) {
+          return chart.get("colors").getIndex(series.columns.indexOf(target));
+        });
+        
+        
+        // Set data
+        var data = [{
+          country: "Concordo plenamente",
+          value: 53
+        }, {
+          country: "Concordo parcialmente",
+          value: 20
+        }, {
+          country: "Neutro",
+          value: 9
+        }, {
+          country: "Discordo parcialmente",
+          value: 4
+        }, {
+          country: "Discordo plenamente",
+          value: 2
+        }];
+        
+        xAxis.data.setAll(data);
+        series.data.setAll(data);
+        
+        
+        // Make stuff animate on load
+        // https://www.amcharts.com/docs/v5/concepts/animations/
+        series.appear(1000);
+        chart.appear(1000, 100);
+        
+        }); // end am5.ready()
+        </script>
 
-var chart = root.container.children.push(am5xy.XYChart.new(root, {
-  focusable: true,
-  panX: true,
-  panY: true,
-  wheelX: "panX",
-  wheelY: "zoomX",
-  pinchZoomX:true,
-  paddingLeft: 0
-}));
-
-var easing = am5.ease.linear;
-
-
-// Create axes
-// https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
-var xAxis = chart.xAxes.push(am5xy.DateAxis.new(root, {
-  maxDeviation: 0.1,
-  groupData: false,
-  baseInterval: {
-    timeUnit: "day",
-    count: 1
-  },
-  renderer: am5xy.AxisRendererX.new(root, {
-    minorGridEnabled: true,
-    minGridDistance: 70
-  }),
-  tooltip: am5.Tooltip.new(root, {})
-}));
-
-var yAxis = chart.yAxes.push(am5xy.ValueAxis.new(root, {
-  maxDeviation: 0.2,
-  renderer: am5xy.AxisRendererY.new(root, {})
-}));
-
-
-// Add series
-// https://www.amcharts.com/docs/v5/charts/xy-chart/series/
-var series = chart.series.push(am5xy.LineSeries.new(root, {
-  minBulletDistance: 10,
-  connect: false,
-  xAxis: xAxis,
-  yAxis: yAxis,
-  valueYField: "value",
-  valueXField: "date",
-  tooltip: am5.Tooltip.new(root, {
-    pointerOrientation: "horizontal",
-    labelText: "{valueY}"
-  })
-}));
-
-series.fills.template.setAll({
-  fillOpacity: 0.2,
-  visible: true
-});
-
-series.strokes.template.setAll({
-  strokeWidth: 2
-});
-
-
-// Set up data processor to parse string dates
-// https://www.amcharts.com/docs/v5/concepts/data/#Pre_processing_data
-series.data.processor = am5.DataProcessor.new(root, {
-  dateFormat: "yyyy-MM-dd",
-  dateFields: ["date"]
-});
-
-series.data.setAll(data);
-
-series.bullets.push(function() {
-  var circle = am5.Circle.new(root, {
-    radius: 4,
-    fill: root.interfaceColors.get("background"),
-    stroke: series.get("fill"),
-    strokeWidth: 2
-  })
-
-  return am5.Bullet.new(root, {
-    sprite: circle
-  })
-});
-
-
-// Add cursor
-// https://www.amcharts.com/docs/v5/charts/xy-chart/cursor/
-var cursor = chart.set("cursor", am5xy.XYCursor.new(root, {
-  xAxis: xAxis,
-  behavior: "none"
-}));
-cursor.lineY.set("visible", false);
-
-// add scrollbar
-chart.set("scrollbarX", am5.Scrollbar.new(root, {
-  orientation: "horizontal"
-}));
-
-
-// Make stuff animate on load
-// https://www.amcharts.com/docs/v5/concepts/animations/
-chart.appear(1000, 100);
-
-}); // end am5.ready()
-</script>
-
-      <!-- HTML -->
-      <div id="chartdiv1"></div>
+        <!-- HTML -->
+        <div id="chartdiv4"></div>
+      </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="src/js/artigo.js"></script>
