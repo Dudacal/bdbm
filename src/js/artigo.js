@@ -12,7 +12,7 @@ function sendEmail() {
             "<br>E-mail: " + document.getElementById("email").value +
             "<br><br> Primeira questão: " + document.querySelector('input[name="quest1"]:checked').value +
             "<br>Segunda questão: " + document.querySelector('input[name="quest2"]:checked').value +
-            "<br>Terceira questão: " +document.querySelector('input[name="quest3"]:checked').value +
+            "<br>Terceira questão: " + document.querySelector('input[name="quest3"]:checked').value +
             "<br>Quarta questão: " + document.querySelector('input[name="quest4"]:checked').value
     }).then(
         message => alert(message)
